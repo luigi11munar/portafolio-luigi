@@ -1,4 +1,4 @@
-// src/components/LiquidChrome.jsx
+import "./ProfileCard.css";
 import { useRef, useEffect } from "react";
 import { Renderer, Program, Mesh, Triangle } from "ogl";
 

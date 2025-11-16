@@ -1,109 +1,74 @@
 // =============== src/App.jsx ===============
-// =============== src/App.jsx ===============
-import React from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  NavLink,
+  useLocation,
+} from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
-// Efectos de fondo
+import ProfileCard from "./components/ProfileCard";
 import LiquidChrome from "./components/LiquidChrome";
 import SplashCursor from "./components/SplashCursor";
+import profileImage from "./assets/luigi-foto.png";
 
-// Tarjeta 3D
-import ProfileCard from "./components/ProfileCard";
+import {
+  Github,
+  Linkedin,
+  Mail,
+  Code2,
+  Cpu,
+  Database,
+  Workflow,
+  FileDown,
+  Sun,
+  Moon,
+  Rocket,
+  MousePointerClick,
+  ExternalLink,
+  ChevronRight,
+  MapPin,
+  Phone,
+  Download,
+  Sparkles,
+} from "lucide-react";
 
-// Tu foto (está en src/assets)
-import luigiFoto from "./assets/luigi-foto.png";
+import "./index.css";
 
-export default function App() {
-  return (
-    <div className="min-h-screen bg-[#020617] text-white relative overflow-hidden">
-      {/* Fondo líquido tipo “sea of liquid chrome” */}
-      <LiquidChrome
-        className="fixed inset-0 -z-30"
-        baseColor={[0.9, 0.0, 0.4]} // fucsia/morado
-        speed={0.35}
-        amplitude={0.35}
-        frequencyX={3.0}
-        frequencyY={3.0}
-        interactive={true}
-      />
+const CV_PDF_URL = "/cv.pdf";
 
-      {/* Fluido que sigue al cursor */}
-      <SplashCursor
-        DYE_RESOLUTION={1440}
-        COLOR_UPDATE_SPEED={10}
-        BACK_COLOR={{ r: 0.3, g: 0.0, b: 0.4 }}
-        SHADING={true}
-        TRANSPARENT={true}
-      />
 
-      {/* CONTENIDO DEL PORTAFOLIO */}
-      <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
-        <div className="max-w-6xl w-full grid gap-10 lg:grid-cols-2 items-center">
-          {/* LADO IZQUIERDO: texto y botones */}
-          <div className="space-y-6">
-            <p className="text-sm uppercase tracking-[0.25em] text-cyan-300">
-              @luigijhoan.dev
-            </p>
+// =================== THEME ===================
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-              Hola, soy{" "}
-              <span className="text-cyan-400">
-                Luigi Jhoan Keith Ríos Munar
-              </span>
-            </h1>
+const ThemeContext = React.createContext(null)
 
-            <p className="text-base md:text-lg text-slate-200 max-w-xl">
-              Ingeniero de Sistemas — desarrollo web, inteligencia artificial,
-              análisis de datos y automatización para crear experiencias
-              digitales eficientes e inteligentes.
-            </p>
+function ThemeProvider({ children }) {
+  const [isDark, setIsDark] = React.useState(() => {
+    if (typeof window === "undefined") return true
+    const stored = localStorage.getItem("luigi_theme")
+    if (stored) return stored === "dark"
+    if (window.matchMedia) {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+    }
+    return true
+  })
 
-            <div className="flex flex-wrap gap-4">
-              <a
-                href="/cv.pdf" // tu CV está en /public/cv.pdf
-                className="px-5 py-3 rounded-full bg-cyan-500 text-slate-950 font-semibold hover:bg-cyan-400 transition"
-              >
-                Ver / Descargar CV
-              </a>
-              <a
-                href="mailto:luigijhoan@gmail.com"
-                className="px-5 py-3 rounded-full border border-cyan-400/60 text-cyan-300 font-semibold hover:bg-cyan-400/10 transition"
-              >
-                Contáctame
-              </a>
-            </div>
+  React.useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.classList.toggle("dark", isDark)
+      localStorage.setItem("luigi_theme", isDark ? "dark" : "light")
+    }
+  }, [isDark])
 
-            <div className="flex flex-wrap gap-3 text-xs text-slate-400">
-              <span>💻 Full-Stack JavaScript</span>
-              <span>🤖 IA aplicada al negocio</span>
-              <span>📊 Data-Driven Solutions</span>
-              <span>⚙️ Automatización de procesos</span>
-            </div>
-          </div>
+  const value = React.useMemo(() => ({ isDark, setIsDark }), [isDark])
+  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+}
 
-          {/* LADO DERECHO: ProfileCard animada con tu foto */}
-          <div className="flex justify-center lg:justify-end">
-            <div className="w-[320px] sm:w-[360px] md:w-[400px]">
-              <ProfileCard
-                name="Luigi Jhoan Keith Ríos Munar"
-                title="Ingeniero de Sistemas · Web · IA · Data"
-                handle="luigijhoan"
-                status="Disponible para nuevas oportunidades"
-                contactText="Escríbeme"
-                avatarUrl={luigiFoto}
-                miniAvatarUrl={luigiFoto}
-                showUserInfo={true}
-                enableTilt={true}
-                enableMobileTilt={false}
-                onContactClick={() => {
-                  window.location.href = "mailto:luigijhoan@gmail.com";
-                }}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+function useTheme() {
+  return React.useContext(ThemeContext)
 }
 
 // =================== APP SHELL & LOADER ===================
