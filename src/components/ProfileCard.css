@@ -1,0 +1,12 @@
+.liquidChrome-container {
+  width: 100%;
+  height: 100%;
+  /* para usarlo como fondo */
+  position: absolute;
+  inset: 0;
+  border-radius: 0;          /* o 32px si solo es detrás de una card */
+  overflow: hidden;
+  opacity: 0.45;             /* más sutil */
+  mix-blend-mode: screen;    /* se mezcla con tu gradient azul */
+  pointer-events: none;      /* no tapa los clicks */
+}

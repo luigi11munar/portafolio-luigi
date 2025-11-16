@@ -1,0 +1,17 @@
+/* src/components/LiquidChrome.css */
+
+.liquidChrome-container {
+  position: fixed;          /* siempre pegado a la ventana */
+  inset: 0;                 /* ocupa todo el viewport */
+  width: 100vw;
+  height: 100vh;
+  z-index: -20;             /* por detrás de todo tu contenido */
+  overflow: hidden;
+}
+
+/* el canvas que crea OGL */
+.liquidChrome-container canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
