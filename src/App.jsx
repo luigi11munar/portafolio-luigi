@@ -1,10 +1,19 @@
 // =============== src/App.jsx ===============
-import React, { useEffect, useMemo, useRef, useState } from "react"
-import { BrowserRouter, Routes, Route, Link, NavLink, useLocation } from "react-router-dom"
-import { motion, AnimatePresence } from "framer-motion"
-import ProfileCard from "./components/ProfileCard"
-import LiquidChrome from "./components/LiquidChrome"
-import profileImage from "./assets/luigi-foto.png"
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link,
+  NavLink,
+  useLocation,
+} from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+
+import ProfileCard from "./components/ProfileCard";
+import LiquidChrome from "./components/LiquidChrome";
+import SplashCursor from "./components/SplashCursor";
+import profileImage from "./assets/luigi-foto.png";
 
 import {
   Github,
@@ -25,11 +34,12 @@ import {
   Phone,
   Download,
   Sparkles,
-} from "lucide-react"
+} from "lucide-react";
 
-import "./index.css"
+import "./index.css";
 
-const CV_PDF_URL = "/cv.pdf"
+const CV_PDF_URL = "/cv.pdf";
+
 
 // =================== THEME ===================
 
@@ -243,8 +253,7 @@ function Navbar() {
                 key={l.label}
                 to={l.to}
                 className={({ isActive }) =>
-                  `text-sm hover:text-cyan-300 transition ${
-                    isActive ? "text-cyan-400" : "text-slate-200"
+                  `text-sm hover:text-cyan-300 transition ${isActive ? "text-cyan-400" : "text-slate-200"
                   }`
                 }
               >
@@ -260,14 +269,12 @@ function Navbar() {
               <span className="sr-only">Tema</span>
               <div className="relative w-5 h-5 flex items-center justify-center">
                 <Sun
-                  className={`w-4 h-4 text-yellow-300 transition-all ${
-                    isDark ? "opacity-0 -rotate-90 scale-75" : "opacity-100 rotate-0 scale-100"
-                  }`}
+                  className={`w-4 h-4 text-yellow-300 transition-all ${isDark ? "opacity-0 -rotate-90 scale-75" : "opacity-100 rotate-0 scale-100"
+                    }`}
                 />
                 <Moon
-                  className={`w-4 h-4 text-slate-200 absolute transition-all ${
-                    isDark ? "opacity-100 rotate-0 scale-100" : "opacity-0 rotate-90 scale-75"
-                  }`}
+                  className={`w-4 h-4 text-slate-200 absolute transition-all ${isDark ? "opacity-100 rotate-0 scale-100" : "opacity-0 rotate-90 scale-75"
+                    }`}
                 />
               </div>
               <span className="text-xs text-slate-100">
@@ -1738,9 +1745,8 @@ function ProyectosPage() {
             <button
               key={c}
               onClick={() => setFilter(c)}
-              className={`px-3 py-1.5 rounded-full border ${
-                filter === c ? "border-cyan-400/60 bg-white/5" : "border-white/10"
-              } text-sm`}
+              className={`px-3 py-1.5 rounded-full border ${filter === c ? "border-cyan-400/60 bg-white/5" : "border-white/10"
+                } text-sm`}
             >
               {c}
             </button>
@@ -1903,11 +1909,10 @@ function ChatWidget() {
             {msgs.map((m, i) => (
               <div key={i} className={`text-sm ${m.role === "user" ? "text-right" : ""}`}>
                 <span
-                  className={`inline-block px-3 py-2 rounded-xl ${
-                    m.role === "user"
+                  className={`inline-block px-3 py-2 rounded-xl ${m.role === "user"
                       ? "bg-white/10"
                       : "bg-cyan-500/10 border border-cyan-500/30"
-                  }`}
+                    }`}
                 >
                   {m.content}
                 </span>
@@ -1937,8 +1942,7 @@ function ChatWidget() {
 }
 
 // =================== APP ROOT COMPONENT ===================
-
-
+// =================== APP ROOT COMPONENT ===================
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -1951,22 +1955,30 @@ function App() {
   return (
     <ThemeProvider>
       <AppShell>
-        {/* 🔮 FONDO LÍQUIDO PRINCIPAL */}
+        {/* 🔮 Fondo líquido fijo atrás de todo */}
         <LiquidChrome
-          className="pointer-events-none opacity-95"
-          baseColor={[0.3, 0.0, 0.4]}  // ajusta el color como quieras
+          className="fixed inset-0 -z-30 opacity-95"
+          baseColor={[0.3, 0.0, 0.4]}
           speed={0.3}
           amplitude={0.3}
           frequencyX={3}
           frequencyY={3}
-          interactive={true}          // 👉 el shader reacciona al mouse
+          interactive={true}
         />
 
-        {/* (Opcional) si quieres partículas, las puedes volver a activar */}
-        {/* <ParticlesBG /> */}
+        {/* 💧 Fluido siguiendo el cursor encima del fondo */}
+        <SplashCursor
+          DYE_RESOLUTION={1440}
+          COLOR_UPDATE_SPEED={10}
+          BACK_COLOR={{ r: 0.3, g: 0.0, b: 0.4 }}
+          SHADING={true}
+          TRANSPARENT={true}
+        />
 
+        {/* Loader inicial */}
         {loading && <Loader />}
 
+        {/* Router de toda la app */}
         <BrowserRouter>
           <Navbar />
           <ScrollToHash />
