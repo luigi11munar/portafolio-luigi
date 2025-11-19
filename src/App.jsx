@@ -1978,7 +1978,7 @@ function App() {
         {/* 🔮 Fondo líquido fijo atrás de todo */}
         <LiquidChrome
           className="fixed inset-0 -z-30 opacity-95"
-          baseColor={[0.15, 0.10, 0.30]}    // azul oscuro neutro
+          baseColor={[0.08, 0.11, 0.22] }    // azul oscuro neutro
           speed={0.18}
           amplitude={0.18}
           frequencyX={2.0}
