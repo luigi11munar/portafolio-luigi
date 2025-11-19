@@ -5,15 +5,18 @@ import { Renderer, Program, Mesh, Triangle } from "ogl";
 import "./LiquidChrome.css";
 
 const LiquidChrome = ({
-  baseColor = [0.3, 0.0, 0.4], // 💜 color magenta/violeta como el demo
-  speed = 0.3,
-  amplitude = 0.3,
-  frequencyX = 3,
-  frequencyY = 3,
+  // 🎨 Fondo más neutro: azul/violeta oscuro
+  // [R, G, B] en 0–1  → aprox #101935
+  baseColor = [0.06, 0.09, 0.21],
+  speed = 0.18,       // más lento
+  amplitude = 0.18,   // menos movimiento
+  frequencyX = 2.0,
+  frequencyY = 2.0,
   interactive = true,
   className = "",
   ...props
 }) => {
+  // res
   const containerRef = useRef(null);
 
   useEffect(() => {

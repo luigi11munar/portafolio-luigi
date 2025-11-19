@@ -38,7 +38,7 @@ import {
 
 import "./index.css";
 
-const CV_PDF_URL = "/cv.pdf";
+const CV_PDF_URL = "/cv LUIGI JHOAN RIOS.pdf";
 
 
 // =================== THEME ===================
@@ -1407,9 +1407,29 @@ function ProjectsPreview() {
 function Timeline() {
   const items = [
     {
-      when: "2023 — 2025",
+      when: "2018 — 2025",
       where: "Ingeniería de Sistemas",
       details: "Énfasis en desarrollo web, IA y analítica.",
+    },
+    {
+      when: "Oct 2024 – Oct 2025",
+      where: "Docente de Matemáticas – I.E. San Lucas, Santa Rosa del Sur",
+      details: "Dicté clases, diseñé material y realicé seguimiento académico personalizado.",
+    },
+    {
+      when: "Nov 2023 – Feb 2024",
+      where: "Asistente Logístico y de Ventas – Punto Frío “Zulay”",
+      details: "Gestión de inventarios, atención al cliente y apoyo en ventas presenciales.",
+    },
+    {
+      when: "Feb 2023 – Ago 2023",
+      where: "Desarrollador Freelance – JLP Sports Supplement",
+      details: "Diseño de herramientas digitales internas y automatización de procesos básicos.",
+    },
+    {
+      when: "Abr 2022 – Oct 2022",
+      where: "Formador TIC & IA – Fundessub",
+      details: "Talleres de alfabetización digital e introducción a IA aplicada al emprendimiento.",
     },
     {
       when: "2024",
@@ -1910,8 +1930,8 @@ function ChatWidget() {
               <div key={i} className={`text-sm ${m.role === "user" ? "text-right" : ""}`}>
                 <span
                   className={`inline-block px-3 py-2 rounded-xl ${m.role === "user"
-                      ? "bg-white/10"
-                      : "bg-cyan-500/10 border border-cyan-500/30"
+                    ? "bg-white/10"
+                    : "bg-cyan-500/10 border border-cyan-500/30"
                     }`}
                 >
                   {m.content}
@@ -1958,11 +1978,11 @@ function App() {
         {/* 🔮 Fondo líquido fijo atrás de todo */}
         <LiquidChrome
           className="fixed inset-0 -z-30 opacity-95"
-          baseColor={[0.3, 0.0, 0.4]}
-          speed={0.3}
-          amplitude={0.3}
-          frequencyX={3}
-          frequencyY={3}
+          baseColor={[0.15, 0.10, 0.30]}    // azul oscuro neutro
+          speed={0.18}
+          amplitude={0.18}
+          frequencyX={2.0}
+          frequencyY={2.0}
           interactive={true}
         />
 
