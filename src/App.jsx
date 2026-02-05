@@ -1645,7 +1645,7 @@ function Contact() {
               <MapPin className="w-4 h-4 text-cyan-300" /> Colombia
             </li>
             <li className="flex items-center gap-2">
-              <Phone className="w-4 h-4 text-cyan-300" /> +57 317 725 9443
+              <Phone className="w-4 h-4 text-cyan-300" /> +57 3177259443
             </li>
           </ul>
           <div className="mt-6 flex gap-3">
