@@ -484,11 +484,14 @@ function Hero() {
               <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition" />
             </a>
             <a
-              href="/cv#download"
-              className="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 px-5 py-2.5 font-medium hover:border-fuchsia-400/60"
+              href="/CV_Luigi_2026.pdf"
+              download
+              className="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 px-5 py-2.5"
             >
-              <FileDown className="w-4 h-4" /> Descargar CV
+              <FileDown className="w-4 h-4" />
+              Descargar CV
             </a>
+
           </div>
 
           <div className="mt-6 flex items-center gap-4 text-slate-300">
@@ -503,7 +506,7 @@ function Hero() {
             </a>
             <a
               className="hover:text-white inline-flex.items-center gap-2"
-              href="https://www.linkedin.com"
+              href="www.linkedin.com/in/luigi-jhoan-keith-rios-munar-145319174"
               target="_blank"
               rel="noreferrer"
             >
@@ -1978,7 +1981,7 @@ function App() {
         {/* 🔮 Fondo líquido fijo atrás de todo */}
         <LiquidChrome
           className="fixed inset-0 -z-30 opacity-95"
-          baseColor={[0.08, 0.11, 0.22] }    // azul oscuro neutro
+          baseColor={[0.08, 0.11, 0.22]}    // azul oscuro neutro
           speed={0.18}
           amplitude={0.18}
           frequencyX={2.0}
