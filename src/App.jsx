@@ -38,7 +38,7 @@ import {
 
 import "./index.css";
 
-const CV_PDF_URL = "/cv LUIGI JHOAN RIOS.pdf";
+const CV_PDF_URL = "/cv 2026 LUIGI.pdf";
 
 
 // =================== THEME ===================
@@ -1645,7 +1645,7 @@ function Contact() {
               <MapPin className="w-4 h-4 text-cyan-300" /> Colombia
             </li>
             <li className="flex items-center gap-2">
-              <Phone className="w-4 h-4 text-cyan-300" /> +57 ••• ••• ••••
+              <Phone className="w-4 h-4 text-cyan-300" /> +57 317 725 9443
             </li>
           </ul>
           <div className="mt-6 flex gap-3">
@@ -1659,7 +1659,7 @@ function Contact() {
             </a>
             <a
               className="hover:opacity-90 inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-1.5"
-              href="https://www.linkedin.com"
+              href="www.linkedin.com/in/luigi-jhoan-keith-rios-munar-145319174"
               target="_blank"
               rel="noreferrer"
             >
