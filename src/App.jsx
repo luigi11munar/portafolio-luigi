@@ -484,7 +484,7 @@ function Hero() {
               <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition" />
             </a>
             <a
-              href="/cv 2026 LUIGI.pdf"
+              href="/cv%202026%20LUIGI.pdf"
               download
               className="inline-flex items-center gap-2 rounded-full border border-cyan-400/40 px-5 py-2.5"
             >
