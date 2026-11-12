@@ -360,7 +360,7 @@
     calc(var(--pointer-from-top) * -6px + 3px),
     0.1px
   );
-  zIndex: 5;
+  z-index: 5;
   mix-blend-mode: luminosity;
 }
 
